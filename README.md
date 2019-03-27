@@ -42,8 +42,9 @@ gem 'carrierwave_backgrounder'
 ```
 
 Run the generator which will create an initializer in config/initializers.
+
 ```bash
-  rails g carrierwave_backgrounder:install
+rails g carrierwave_backgrounder:install
 ```
 
 You can pass additional configuration options to Girl Friday and Sidekiq:
@@ -98,6 +99,7 @@ add_column :users, :avatar_tmp, :string
 ## Usage Tips
 
 ### Bypass backgrounding
+
 If you need to process/store the upload immediately:
 
 ```ruby
@@ -114,6 +116,7 @@ This must be set before you assign an upload:
 ```
 
 ### Override worker
+
 To override the worker in cases where additional methods need to be called or you have app specific requirements, pass the worker class as the
 second argument:
 
@@ -136,7 +139,9 @@ end
 ```
 
 ### ActiveJob
+
 Use overriden worker that inherits from ActiveJob::Base and includes relevant worker mixin:
+
 ```ruby
 class MyActiveJobWorker < ActiveJob::Base
   include ::CarrierWave::Workers::ProcessAssetMixin
@@ -154,7 +159,9 @@ class MyActiveJobWorker < ActiveJob::Base
   end
 end
 ```
+
 Don't forget to set `active_job` as a backend in the config:
+
 ```ruby
 CarrierWave::Backgrounder.configure do |c|
   c.backend :active_job, queue: :carrierwave
@@ -162,11 +169,13 @@ end
 ```
 
 ### Testing with Rspec
+
 We use the after_commit hook when using active_record. This creates a problem when testing with Rspec because after_commit never gets fired
 if you're using trasactional fixtures. One solution to the problem is to use the [TestAfterCommit gem](https://github.com/grosser/test_after_commit).
 There are various other solutions in which case google is your friend.
 
 ### Uploaders mounted on mongoid embedded documents
+
 The workers fetch the document with the mounted uploader using the model class name and id. Uploads on embedded documents
 cannot be obtained this way. If the position of the document in the root document structure is known, a workaround is to override the embedded models
 find method like this:
