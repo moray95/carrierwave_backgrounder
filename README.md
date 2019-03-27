@@ -1,7 +1,7 @@
 # CarrierWave Backgrounder
 
-[![Build Status](https://secure.travis-ci.org/lardawge/carrierwave_backgrounder.png)](http://travis-ci.org/lardawge/carrierwave_backgrounder)
-[![Code Climate](https://codeclimate.com/github/lardawge/carrierwave_backgrounder.png)](https://codeclimate.com/github/lardawge/carrierwave_backgrounder)
+[![Build Status](https://secure.travis-ci.org/lardawge/carrierwave_backgrounder.svg)](http://travis-ci.org/lardawge/carrierwave_backgrounder)
+[![Code Climate](https://codeclimate.com/github/lardawge/carrierwave_backgrounder.svg)](https://codeclimate.com/github/lardawge/carrierwave_backgrounder)
 
 I like CarrierWave. That being said, I don't like tying up app instances waiting for images to process.
 
