@@ -29,8 +29,8 @@ module CarrierWave
         def _supported_callback
           respond_to?(:after_commit) ? :after_commit : :after_save
         end
-      end # ActiveModel
+      end
 
-    end # ORM
-  end # Backgrounder
-end # CarrierWave
+    end
+  end
+end

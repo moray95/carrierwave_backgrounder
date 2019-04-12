@@ -5,11 +5,9 @@ require 'backgrounder/workers'
 module CarrierWave
   module Backgrounder
     module ORM
-
       ##
       # Base class for all things orm
       module Base
-
         ##
         # User#process_in_background will process and create versions in a background process.
         #
@@ -75,7 +73,7 @@ module CarrierWave
 
           mod = Module.new
           include mod
-          mod.class_eval  <<-RUBY, __FILE__, __LINE__ + 1
+          mod.class_eval <<-RUBY, __FILE__, __LINE__ + 1
             def remove_#{column}=(value)
               super
               self.process_#{column}_upload = true
@@ -98,7 +96,7 @@ module CarrierWave
         private
 
         def _define_shared_backgrounder_methods(mod, column, worker)
-          mod.class_eval  <<-RUBY, __FILE__, __LINE__ + 1
+          mod.class_eval <<-RUBY, __FILE__, __LINE__ + 1
             def #{column}_updated?; true; end
 
             def set_#{column}_processing
@@ -114,8 +112,7 @@ module CarrierWave
             end
           RUBY
         end
-      end # Base
-
-    end # ORM
-  end # Backgrounder
-end # CarrierWave
+      end
+    end
+  end
+end

@@ -75,7 +75,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
     it 'calls previous_changes' do
       expect(instance).to receive(:process_avatar_upload).and_return(false)
       expect(instance).to receive(:avatar_changed?).and_return(false)
-      expect(instance).to receive(:previous_changes).and_return({ avatar: true })
+      expect(instance).to receive(:previous_changes).and_return(avatar: true)
       expect(instance.enqueue_avatar_background_job?).to be_truthy
     end
 

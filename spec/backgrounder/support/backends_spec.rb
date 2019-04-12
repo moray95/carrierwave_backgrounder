@@ -26,7 +26,7 @@ module CarrierWave::Backgrounder
 
       it 'allows passing of queue_options' do
         mock_module.backend(:delayed_job, queue: :awesome_queue)
-        expect(mock_module.queue_options).to eql({ queue: :awesome_queue })
+        expect(mock_module.queue_options).to eql(queue: :awesome_queue)
       end
     end
 
@@ -124,27 +124,27 @@ module CarrierWave::Backgrounder
         let(:args) { ['FakeClass', 1, :image] }
 
         it 'invokes client_push on the class with passed args' do
-          expect(MockSidekiqWorker).to receive(:client_push).with({ 'class' => MockSidekiqWorker, 'args' => args })
+          expect(MockSidekiqWorker).to receive(:client_push).with('class' => MockSidekiqWorker, 'args' => args)
           mock_module.backend :sidekiq
           mock_module.enqueue_for_backend(MockSidekiqWorker, *args)
         end
 
         it 'invokes client_push and includes the options passed to backend' do
-          expect(MockSidekiqWorker).to receive(:client_push).with({ 'class' => MockSidekiqWorker,
+          expect(MockSidekiqWorker).to receive(:client_push).with( 'class' => MockSidekiqWorker,
                                                                     'retry' => false,
                                                                     'timeout' => 60,
                                                                     'queue' => :awesome_queue,
-                                                                    'args' => args })
+                                                                    'args' => args )
           options = { retry: false, timeout: 60, queue: :awesome_queue }
           mock_module.backend :sidekiq, options
           mock_module.enqueue_for_backend(MockSidekiqWorker, *args)
         end
 
         it 'does not override queue name if set it worker' do
-          expect(MockNamedSidekiqWorker).to receive(:client_push).with({ 'class' => MockNamedSidekiqWorker,
+          expect(MockNamedSidekiqWorker).to receive(:client_push).with( 'class' => MockNamedSidekiqWorker,
                                                                     'retry' => false,
                                                                     'timeout' => 60,
-                                                                    'args' => args })
+                                                                    'args' => args )
           options = { retry: false, timeout: 60 }
           mock_module.backend :sidekiq, options
           mock_module.enqueue_for_backend(MockNamedSidekiqWorker, *args)
@@ -162,7 +162,7 @@ module CarrierWave::Backgrounder
 
         it 'instantiates a GirlFriday work queue passing the args to the queue' do
           mock_module.backend :girl_friday, queue: :awesome_queue, size: 3
-          expect(GirlFriday::WorkQueue).to receive(:new).with(:awesome_queue, { size: 3 }).and_return([])
+          expect(GirlFriday::WorkQueue).to receive(:new).with(:awesome_queue, size: 3).and_return([])
           mock_module.enqueue_for_backend(*args)
         end
 

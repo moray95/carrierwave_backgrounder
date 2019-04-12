@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ['larry@lucidbleu.com']
   s.homepage    = 'https://github.com/lardawge/carrierwave_backgrounder'
   s.licenses    = ['MIT']
-  s.summary     = %q{Offload CarrierWave's image processing and storage to a background process using Delayed Job, Resque, Sidekiq, Qu, Queue Classic or Girl Friday}
+  s.summary     = "Offload CarrierWave's image processing and storage to a background process using Delayed Job, Resque, Sidekiq, Qu, Queue Classic or Girl Friday"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
