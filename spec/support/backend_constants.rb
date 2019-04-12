@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Fixture module declarations for backend detection testing
 
 module GirlFriday

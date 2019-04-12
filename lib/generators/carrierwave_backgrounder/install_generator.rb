@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CarrierwaveBackgrounder
   module Generators
     class InstallGenerator < Rails::Generators::Base
