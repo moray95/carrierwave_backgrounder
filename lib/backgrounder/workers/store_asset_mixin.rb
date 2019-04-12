@@ -35,7 +35,7 @@ module CarrierWave
         asset, asset_tmp = record.send(:"#{column}"), record.send(:"#{column}_tmp")
         cache_directory  = File.expand_path(asset.cache_dir, asset.root)
         @cache_path      = File.join(cache_directory, asset_tmp)
-        @tmp_directory   = File.join(cache_directory, asset_tmp.split("/").first)
+        @tmp_directory   = File.join(cache_directory, asset_tmp.split('/').first)
       end
 
     end # StoreAssetMixin

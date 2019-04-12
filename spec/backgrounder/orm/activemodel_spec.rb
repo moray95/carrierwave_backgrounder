@@ -55,31 +55,31 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
         expect(@mock_class).to receive(:uploader_options).and_return(options_hash)
       end
 
-      it "returns true if alternate column is changed" do
+      it 'returns true if alternate column is changed' do
         expect(instance).to receive(:some_other_column_changed?).and_return(true)
         expect(instance.avatar_updated?).to be_truthy
       end
     end
 
-    it "returns true if process_avatar_upload is false" do
+    it 'returns true if process_avatar_upload is false' do
       expect(instance).to receive(:process_avatar_upload)
       expect(instance.enqueue_avatar_background_job?).to be_truthy
     end
 
-    it "calls column_changed?" do
+    it 'calls column_changed?' do
       expect(instance).to receive(:process_avatar_upload).and_return(false)
       expect(instance).to receive(:avatar_changed?)
       expect(instance.enqueue_avatar_background_job?).to be_truthy
     end
 
-    it "calls previous_changes" do
+    it 'calls previous_changes' do
       expect(instance).to receive(:process_avatar_upload).and_return(false)
       expect(instance).to receive(:avatar_changed?).and_return(false)
       expect(instance).to receive(:previous_changes).and_return({:avatar => true})
       expect(instance.enqueue_avatar_background_job?).to be_truthy
     end
 
-    it "calls avatar_remote_url" do
+    it 'calls avatar_remote_url' do
       expect(instance).to receive(:process_avatar_upload).and_return(false)
       expect(instance).to receive(:avatar_changed?).and_return(false)
       expect(instance).to receive(:previous_changes).and_return({})
@@ -87,7 +87,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
       expect(instance.enqueue_avatar_background_job?).to be_truthy
     end
 
-    it "calls avatar_cache" do
+    it 'calls avatar_cache' do
       expect(instance).to receive(:process_avatar_upload).and_return(false)
       expect(instance).to receive(:avatar_changed?).and_return(false)
       expect(instance).to receive(:previous_changes).and_return({})

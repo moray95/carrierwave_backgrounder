@@ -6,7 +6,7 @@ module CarrierwaveBackgrounder
       source_root File.expand_path('../templates', __FILE__)
 
       def copy_config
-        template "config/initializers/carrierwave_backgrounder.rb"
+        template 'config/initializers/carrierwave_backgrounder.rb'
       end
 
       def info_config

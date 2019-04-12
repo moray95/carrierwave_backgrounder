@@ -216,7 +216,7 @@ module CarrierWave::Backgrounder
 
       context 'qc' do
         it 'calls enqueue with the passed args' do
-          expect(QC).to receive(:enqueue).with("MockWorker.perform", 'FakeClass', 1, 'image')
+          expect(QC).to receive(:enqueue).with('MockWorker.perform', 'FakeClass', 1, 'image')
           mock_module.backend :qc
           mock_module.enqueue_for_backend(MockWorker, 'FakeClass', 1, :image)
         end
