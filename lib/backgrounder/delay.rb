@@ -2,7 +2,6 @@
 
 module CarrierWave
   module Backgrounder
-
     module Delay
       def cache_versions!(new_file)
         super if proceed_with_versioning?
@@ -22,7 +21,6 @@ module CarrierWave
         !model.respond_to?(:"process_#{mounted_as}_upload") && enable_processing ||
           !!(model.send(:"process_#{mounted_as}_upload") && enable_processing)
       end
-    end # Delay
-
-  end # Backgrounder
-end # CarrierWave
+    end
+  end
+end

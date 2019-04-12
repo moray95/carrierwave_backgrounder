@@ -4,7 +4,6 @@ module CarrierWave
   module Backgrounder
     module Support
       module Backends
-
         def self.included(base)
           base.extend ClassMethods
         end

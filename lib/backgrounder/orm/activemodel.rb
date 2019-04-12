@@ -3,7 +3,6 @@
 module CarrierWave
   module Backgrounder
     module ORM
-
       module ActiveModel
         include CarrierWave::Backgrounder::ORM::Base
 
@@ -30,7 +29,6 @@ module CarrierWave
           respond_to?(:after_commit) ? :after_commit : :after_save
         end
       end
-
     end
   end
 end

@@ -10,7 +10,9 @@ class MockWorker < Struct.new(:klass, :id, :column)
   end
 
   def set_args(klass, id, column)
-    self.klass, self.id, self.column = klass, id, column
+    self.klass = klass
+    self.id = id
+    self.column = column
   end
 end
 

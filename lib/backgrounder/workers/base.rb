@@ -2,7 +2,6 @@
 
 module CarrierWave
   module Workers
-
     module Base
       attr_accessor :klass, :id, :column, :record
 
@@ -36,8 +35,6 @@ module CarrierWave
 
       def when_not_ready
       end
-
-    end # Base
-
-  end # Workers
-end # CarrierWave
+    end
+  end
+end

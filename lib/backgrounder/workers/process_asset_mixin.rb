@@ -2,7 +2,6 @@
 
 module CarrierWave
   module Workers
-
     module ProcessAssetMixin
       include CarrierWave::Workers::Base
 
@@ -22,8 +21,6 @@ module CarrierWave
           when_not_ready
         end
       end
-
-    end # ProcessAssetMixin
-
-  end # Workers
-end # Backgrounder
+    end
+  end
+end
