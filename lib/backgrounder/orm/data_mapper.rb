@@ -10,9 +10,9 @@ module CarrierWave
           super
 
           class_eval <<-RUBY, __FILE__, __LINE__ + 1
-            def set_#{column}_processing
-              @#{column}_changed = attribute_dirty?(:#{column})
-              self.#{column}_processing = true if respond_to?(:#{column}_processing)
+            def set_#{ column }_processing
+              @#{ column }_changed = attribute_dirty?(:#{ column })
+              self.#{ column }_processing = true if respond_to?(:#{ column }_processing)
             end
           RUBY
         end
@@ -21,13 +21,13 @@ module CarrierWave
           super
 
           class_eval <<-RUBY, __FILE__, __LINE__ + 1
-            def set_#{column}_changed
-              @#{column}_changed = attribute_dirty?(:#{column})
+            def set_#{ column }_changed
+              @#{ column }_changed = attribute_dirty?(:#{ column })
             end
 
-            def write_#{column}_identifier
-              super and return if process_#{column}_upload
-              self.#{column}_tmp = _mounter(:#{column}).cache_name
+            def write_#{ column }_identifier
+              super and return if process_#{ column }_upload
+              self.#{ column }_tmp = _mounter(:#{ column }).cache_name
             end
           RUBY
         end
@@ -35,23 +35,23 @@ module CarrierWave
         private
 
         def _define_shared_backgrounder_methods(mod, column, worker)
-          before :save, :"set_#{column}_changed"
-          after  :save, :"enqueue_#{column}_background_job"
+          before :save, :"set_#{ column }_changed"
+          after  :save, :"enqueue_#{ column }_background_job"
 
           super
 
           class_eval <<-RUBY, __FILE__, __LINE__ + 1
-            attr_reader :#{column}_changed
+            attr_reader :#{ column }_changed
 
-            def enqueue_#{column}_background_job
-              if enqueue_#{column}_background_job?
-                CarrierWave::Backgrounder.enqueue_for_backend(#{worker}, self.class.name, id, #{column}.mounted_as)
-                @#{column}_changed = false
+            def enqueue_#{ column }_background_job
+              if enqueue_#{ column }_background_job?
+                CarrierWave::Backgrounder.enqueue_for_backend(#{ worker }, self.class.name, id, #{ column }.mounted_as)
+                @#{ column }_changed = false
               end
             end
 
-            def #{column}_updated?
-              #{column}_changed
+            def #{ column }_updated?
+              #{ column }_changed
             end
           RUBY
         end

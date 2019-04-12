@@ -5,7 +5,7 @@ require 'backgrounder/workers/process_asset'
 
 RSpec.describe CarrierWave::Workers::ProcessAsset do
   let(:worker_class) { CarrierWave::Workers::ProcessAsset }
-  let(:user)   { double('User') }
+  let(:user) { double('User') }
   let!(:worker) { worker_class.new(user, '22', :image) }
 
   describe '.perform' do
@@ -19,7 +19,7 @@ RSpec.describe CarrierWave::Workers::ProcessAsset do
   end
 
   describe '#perform' do
-    let(:image)  { double('UserAsset') }
+    let(:image) { double('UserAsset') }
 
     before do
       allow(user).to receive(:find).with('22').and_return(user).once

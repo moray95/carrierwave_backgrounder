@@ -6,3 +6,11 @@ Metrics/LineLength:
 
 Gemspec/OrderedDependencies:
   Enabled: false
+
+Layout/SpaceInsideStringInterpolation:
+  Enabled: true
+  EnforcedStyle: space
+
+Style/WordArray:
+  Enabled: true
+  EnforcedStyle: brackets

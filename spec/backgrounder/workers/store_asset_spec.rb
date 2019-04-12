@@ -19,7 +19,7 @@ RSpec.describe CarrierWave::Workers::StoreAsset do
   end
 
   describe '#perform' do
-    let(:image)  { double('UserAsset') }
+    let(:image) { double('UserAsset') }
 
     before do
       allow(image).to receive(:root).once.and_return(File.expand_path('..', __FILE__))

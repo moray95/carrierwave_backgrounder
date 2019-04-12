@@ -12,7 +12,7 @@ module CarrierWave
 
       def perform(*args)
         set_args(*args) if args.present?
-        self.record = constantized_resource.find id
+        self.record = constantized_resource.find(id)
       rescue *not_found_errors
       end
 
@@ -26,7 +26,9 @@ module CarrierWave
       end
 
       def set_args(klass, id, column)
-        self.klass, self.id, self.column = klass, id, column
+        self.klass = klass
+        self.id = id
+        self.column = column
       end
 
       def constantized_resource

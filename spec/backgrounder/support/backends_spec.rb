@@ -110,13 +110,13 @@ module CarrierWave::Backgrounder
         it 'sets a variable with the queue name, defaults to :carrierwave' do
           mock_module.backend :resque
           mock_module.enqueue_for_backend(*args)
-          expect(MockWorker.instance_variable_get '@queue').to eql(:carrierwave)
+          expect(MockWorker.instance_variable_get('@queue')).to eql(:carrierwave)
         end
 
         it 'sets a variable to the queue name passed to #backend' do
           mock_module.backend :resque, queue: :awesome_queue
           mock_module.enqueue_for_backend(*args)
-          expect(MockWorker.instance_variable_get '@queue').to eql(:awesome_queue)
+          expect(MockWorker.instance_variable_get('@queue')).to eql(:awesome_queue)
         end
       end
 
@@ -130,21 +130,21 @@ module CarrierWave::Backgrounder
         end
 
         it 'invokes client_push and includes the options passed to backend' do
-          expect(MockSidekiqWorker).to receive(:client_push).with( 'class' => MockSidekiqWorker,
-                                                                    'retry' => false,
-                                                                    'timeout' => 60,
-                                                                    'queue' => :awesome_queue,
-                                                                    'args' => args )
+          expect(MockSidekiqWorker).to receive(:client_push).with('class' => MockSidekiqWorker,
+                                                                  'retry' => false,
+                                                                  'timeout' => 60,
+                                                                  'queue' => :awesome_queue,
+                                                                  'args' => args)
           options = { retry: false, timeout: 60, queue: :awesome_queue }
           mock_module.backend :sidekiq, options
           mock_module.enqueue_for_backend(MockSidekiqWorker, *args)
         end
 
         it 'does not override queue name if set it worker' do
-          expect(MockNamedSidekiqWorker).to receive(:client_push).with( 'class' => MockNamedSidekiqWorker,
-                                                                    'retry' => false,
-                                                                    'timeout' => 60,
-                                                                    'args' => args )
+          expect(MockNamedSidekiqWorker).to receive(:client_push).with('class' => MockNamedSidekiqWorker,
+                                                                       'retry' => false,
+                                                                       'timeout' => 60,
+                                                                       'args' => args)
           options = { retry: false, timeout: 60 }
           mock_module.backend :sidekiq, options
           mock_module.enqueue_for_backend(MockNamedSidekiqWorker, *args)
@@ -178,7 +178,7 @@ module CarrierWave::Backgrounder
           mock_module.backend :girl_friday
           mock_module.instance_variable_set('@girl_friday_queue', [])
           mock_module.enqueue_for_backend(*args)
-          expect(mock_module.instance_variable_get '@girl_friday_queue').to eql(expected)
+          expect(mock_module.instance_variable_get('@girl_friday_queue')).to eql(expected)
         end
       end
 
@@ -204,13 +204,13 @@ module CarrierWave::Backgrounder
         it 'sets a variable with the queue name, defaults to :carrierwave' do
           mock_module.backend :qu
           mock_module.enqueue_for_backend(*args)
-          expect(MockWorker.instance_variable_get '@queue').to eql(:carrierwave)
+          expect(MockWorker.instance_variable_get('@queue')).to eql(:carrierwave)
         end
 
         it 'sets a variable to the queue name passed to #backend' do
           mock_module.backend :qu, queue: :awesome_queue
           mock_module.enqueue_for_backend(*args)
-          expect(MockWorker.instance_variable_get '@queue').to eql(:awesome_queue)
+          expect(MockWorker.instance_variable_get('@queue')).to eql(:awesome_queue)
         end
       end
 
