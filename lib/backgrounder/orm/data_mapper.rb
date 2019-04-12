@@ -58,8 +58,8 @@ module CarrierWave
         end
       end # DataMapper
 
-    end #ORM
-  end #Backgrounder
-end #CarrierWave
+    end # ORM
+  end # Backgrounder
+end # CarrierWave
 
 DataMapper::Model.append_extensions ::CarrierWave::Backgrounder::ORM::DataMapper

@@ -116,6 +116,6 @@ module CarrierWave
         end
       end # Base
 
-    end #ORM
-  end #Backgrounder
-end #CarrierWave
+    end # ORM
+  end # Backgrounder
+end # CarrierWave
