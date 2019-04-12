@@ -22,7 +22,7 @@ module CarrierWave
           record.send :"#{column}_processing=", false if record.respond_to?(:"#{column}_processing")
           File.open(cache_path) { |f| record.send :"#{column}=", f }
           if record.save!
-            FileUtils.rm_r(tmp_directory, :force => true)
+            FileUtils.rm_r(tmp_directory, force: true)
           end
         else
           when_not_ready

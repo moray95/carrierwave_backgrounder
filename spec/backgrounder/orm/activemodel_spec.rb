@@ -10,7 +10,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
       def self.before_save(method, opts); nil; end
       def self.after_commit(method, opts); nil; end
       def avatar_changed?; nil;  end
-      def remote_avatar_url; OpenStruct.new(:present? => true); end
+      def remote_avatar_url; OpenStruct.new(present?: true); end
       def remove_avatar?; false; end
       def previous_changes; {}; end
       def self.uploader_options; {}; end
@@ -22,7 +22,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
   describe '.store_in_background' do
     context 'setting up callbacks' do
       it 'creates an after_commit hook' do
-        expect(@mock_class).to receive(:after_commit).with(:enqueue_avatar_background_job, :if => :enqueue_avatar_background_job?)
+        expect(@mock_class).to receive(:after_commit).with(:enqueue_avatar_background_job, if: :enqueue_avatar_background_job?)
         @mock_class.store_in_background :avatar
       end
     end
@@ -31,12 +31,12 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
   describe '.process_in_background' do
     context 'setting up callbacks' do
       it 'creates a before_save hook' do
-        expect(@mock_class).to receive(:before_save).with(:set_avatar_processing, :if => :enqueue_avatar_background_job?)
+        expect(@mock_class).to receive(:before_save).with(:set_avatar_processing, if: :enqueue_avatar_background_job?)
         @mock_class.process_in_background :avatar
       end
 
       it 'creates an after_save hook' do
-        expect(@mock_class).to receive(:after_commit).with(:enqueue_avatar_background_job, :if => :enqueue_avatar_background_job?)
+        expect(@mock_class).to receive(:after_commit).with(:enqueue_avatar_background_job, if: :enqueue_avatar_background_job?)
         @mock_class.process_in_background :avatar
       end
     end
@@ -51,7 +51,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
 
     context 'mount_on option is set' do
       before do
-        options_hash = {:avatar => {:mount_on => :some_other_column}}
+        options_hash = {avatar: {mount_on: :some_other_column}}
         expect(@mock_class).to receive(:uploader_options).and_return(options_hash)
       end
 
@@ -75,7 +75,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
     it 'calls previous_changes' do
       expect(instance).to receive(:process_avatar_upload).and_return(false)
       expect(instance).to receive(:avatar_changed?).and_return(false)
-      expect(instance).to receive(:previous_changes).and_return({:avatar => true})
+      expect(instance).to receive(:previous_changes).and_return({avatar: true})
       expect(instance.enqueue_avatar_background_job?).to be_truthy
     end
 

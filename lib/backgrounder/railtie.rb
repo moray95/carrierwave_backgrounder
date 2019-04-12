@@ -11,7 +11,7 @@ module CarrierWave
         end
       end
 
-      initializer 'carrierwave_backgrounder.data_mapper', :before =>'data_mapper.add_to_prepare' do
+      initializer 'carrierwave_backgrounder.data_mapper', before: 'data_mapper.add_to_prepare' do
         require 'backgrounder/orm/data_mapper' if defined?(DataMapper)
       end
 

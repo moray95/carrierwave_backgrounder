@@ -59,7 +59,7 @@ module CarrierWave
               worker = msg[:worker]
               worker.perform
             end
-            @girl_friday_queue << { :worker => worker.new(*args) }
+            @girl_friday_queue << { worker: worker.new(*args) }
           end
 
           def enqueue_sucker_punch(worker, *args)
