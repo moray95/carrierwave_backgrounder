@@ -18,4 +18,3 @@ end
 RSpec.configure do |c|
   c.include WarningSuppression
 end
-
