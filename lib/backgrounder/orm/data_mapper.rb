@@ -7,7 +7,7 @@ module CarrierWave
       module DataMapper
         include CarrierWave::Backgrounder::ORM::Base
 
-        def process_in_background(column, worker=::CarrierWave::Workers::ProcessAsset)
+        def process_in_background(column, worker = ::CarrierWave::Workers::ProcessAsset)
           super
 
           class_eval  <<-RUBY, __FILE__, __LINE__ + 1
@@ -18,7 +18,7 @@ module CarrierWave
           RUBY
         end
 
-        def store_in_background(column, worker=::CarrierWave::Workers::StoreAsset)
+        def store_in_background(column, worker = ::CarrierWave::Workers::StoreAsset)
           super
 
           class_eval  <<-RUBY, __FILE__, __LINE__ + 1

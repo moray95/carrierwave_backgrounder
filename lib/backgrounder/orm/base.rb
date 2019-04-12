@@ -39,7 +39,7 @@ module CarrierWave
         #     add_column :users, :avatar_processing, :boolean
         #   end
         #
-        def process_in_background(column, worker=::CarrierWave::Workers::ProcessAsset)
+        def process_in_background(column, worker = ::CarrierWave::Workers::ProcessAsset)
           attr_accessor :"process_#{column}_upload"
 
           mod = Module.new
@@ -70,7 +70,7 @@ module CarrierWave
         #     store_in_background :avatar, CustomWorker
         #   end
         #
-        def store_in_background(column, worker=::CarrierWave::Workers::StoreAsset)
+        def store_in_background(column, worker = ::CarrierWave::Workers::StoreAsset)
           attr_accessor :"process_#{column}_upload"
 
           mod = Module.new

@@ -12,7 +12,7 @@ module CarrierWave
         module ClassMethods
           attr_reader :queue_options
 
-          def backend(queue_name=nil, args={})
+          def backend(queue_name = nil, args = {})
             return @backend if @backend
             @queue_options = args
             @backend = queue_name

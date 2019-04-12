@@ -12,7 +12,7 @@ module CarrierWave
         super if proceed_with_versioning?
       end
 
-      def process!(new_file=nil)
+      def process!(new_file = nil)
         super if proceed_with_versioning?
       end
 
