@@ -51,7 +51,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
 
     context 'mount_on option is set' do
       before do
-        options_hash = {avatar: {mount_on: :some_other_column}}
+        options_hash = { avatar: { mount_on: :some_other_column } }
         expect(@mock_class).to receive(:uploader_options).and_return(options_hash)
       end
 
@@ -75,7 +75,7 @@ RSpec.describe CarrierWave::Backgrounder::ORM::ActiveModel do
     it 'calls previous_changes' do
       expect(instance).to receive(:process_avatar_upload).and_return(false)
       expect(instance).to receive(:avatar_changed?).and_return(false)
-      expect(instance).to receive(:previous_changes).and_return({avatar: true})
+      expect(instance).to receive(:previous_changes).and_return({ avatar: true })
       expect(instance.enqueue_avatar_background_job?).to be_truthy
     end
 
