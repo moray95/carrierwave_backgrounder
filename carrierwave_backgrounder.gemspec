@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'carrierwave', ['>= 0.5', '< 2.0']
 
-  s.add_development_dependency 'rspec', ['~> 3.5.0']
+  s.add_development_dependency 'rspec'
   s.add_development_dependency 'rake'
 end
